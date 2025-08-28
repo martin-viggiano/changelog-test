@@ -5,8 +5,7 @@ dist: ./dist
 
 git:
   tag_sort: semver
-  ignore_tag_prefixes:
-    - "v{{ .RawVersion }}-"
+  ignore_tag_prefixes: ["{{ .Tag }}-"]
 
 project_name: "changelog-test"
 
