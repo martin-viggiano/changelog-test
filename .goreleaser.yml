@@ -1,0 +1,37 @@
+# yaml-language-server: $schema=https://goreleaser.com/static/schema-pro.json
+version: 2
+
+dist: ./dist
+
+git:
+  tag_sort: semver
+  ignore_tag_prefixes:
+    - "v{{ .RawVersion }}-"
+
+project_name: "changelog-test"
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: "main"
+    main: .
+    goos: [darwin]
+    goarch: [arm64]
+
+release:
+  prerelease: auto
+
+changelog:
+  sort: asc
+  use: git
+  filters:
+    exclude:
+      - "^test:"
+      - "^test\\("
+      - "merge conflict"
+      - Merge pull request
+      - Merge remote-tracking branch
+      - Merge branch
+      - go mod tidy
