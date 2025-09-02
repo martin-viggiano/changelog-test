@@ -4,9 +4,7 @@ version: 2
 dist: ./dist
 
 git:
-  tag_sort: semver
-  ignore_tag_prefixes:
-    - "v{{ .RawVersion }}-"
+  tag_sort: smartsemver
 
 project_name: "changelog-test"
 
